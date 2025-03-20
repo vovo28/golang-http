@@ -41,3 +41,10 @@ func SuccessResponse[T any](message string, data T) Response[T] {
     Data:    data,
   }
 }
+func (r *Response[T]) isSuccess() bool {
+  return r.Status == "0"
+}
+
+func EmptyResponse[T any]() Response[T] {
+  return Response[T]{Status: "", Message: "", Data: *new(T)}
+}
