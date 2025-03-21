@@ -42,6 +42,15 @@ func ErrorResponse[T any](message string, data T) Response[T] {
   }
 }
 
+// NewErrResponse 新的错误响应
+func NewErrResponse(message string, err error) Response[string] {
+  return Response[string]{
+    Status:  "1",
+    Message: message,
+    Data:    err.Error(),
+  }
+}
+
 func SuccessResponse[T any](message string, data T) Response[T] {
   return Response[T]{
     Status:  "0",
